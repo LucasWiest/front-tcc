@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .w-fill {
+    min-width: -webkit-fill-available;
+    min-width: -moz-available; /* Para Firefox (limitado) */
+  }
+}

@@ -1,0 +1,30 @@
+<div class="navbar navbar-floating">
+	<div class="navbar-start">
+		<a class="navbar-item">Connection</a>
+	</div>
+	<div class="navbar-end">
+		@if (user) {
+			<a class="navbar-item" routerLink="/dashboard">
+				Dashboard
+			</a>
+		}
+		<div class="dropdown">
+			<button class="avatar dropdown">
+				<img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="avatar" />
+			</button>
+			@if (user) {
+				<div class="dropdown-menu dropdown-menu-bottom-left ml-2">
+					<a tabindex="-1" [routerLink]="['/profile/{user.name}']" class="dropdown-item text-sm">Perfil</a>
+				</div>
+			} @else {
+				<div class="dropdown-menu dropdown-menu-bottom-left ml-2">
+					<a tabindex="-1" [routerLink]="['/login']" class="dropdown-item text-sm">Login</a>
+				</div>
+			}
+		</div>
+		<!-- <button class="avatar">
+			<img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="avatar" />
+
+		</button> -->
+	</div>
+</div>

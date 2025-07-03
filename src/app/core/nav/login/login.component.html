@@ -1,0 +1,44 @@
+<div class="mx-auto flex w-full max-w-sm flex-col gap-6">
+	<div class="flex flex-col items-center">
+		<h1 class="text-3xl font-semibold">Login</h1>
+		<p class="text-sm">Faça o login para acessar</p>
+	</div>
+	<div class="form-group">
+		<div class="form-field">
+			<label class="form-label">Email</label>
+
+			<input placeholder="Type here" type="email" class="input max-w-full" />
+			<label class="form-label">
+				<span class="form-label-alt">Por favor, entre com um email válido</span>
+			</label>
+		</div>
+		<div class="form-field">
+			<label class="form-label">Senha</label>
+			<div class="form-control">
+				<input placeholder="Type here" type="password" class="input max-w-full" />
+			</div>
+		</div>
+		<div class="form-field">
+			<div class="form-control justify-between">
+				<div class="flex gap-2">
+					<input type="checkbox" class="checkbox" />
+					<a href="#">Lembre-me</a>
+				</div>
+				<label class="form-label">
+					<a class="link link-underline-hover link-primary text-sm">Esqueceu sua senha?</a>
+				</label>
+			</div>
+		</div>
+		<div class="form-field pt-5">
+			<div class="form-control justify-between">
+				<button type="button" class="btn btn-primary w-full">Entrar</button>
+			</div>
+		</div>
+
+		<div class="form-field">
+			<div class="form-control justify-center">
+				<button [routerLink]="['/profile/new']" routerLinkActive="router-link-active" class="link link-underline-hover link-primary text-sm">Não tem uma conta ainda? Criar.</button>
+			</div>
+		</div>
+	</div>
+</div>

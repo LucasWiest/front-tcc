@@ -1,0 +1,74 @@
+<div>
+    <div>
+        Cadastro de Grupo
+    </div>
+    <div>
+        <section class="bg-gray-2 rounded-xl">
+            <div class="p-8 shadow-lg">
+                <form class="space-y-4">
+                    <div class="form-field w-full">
+                        <label class="form-label" for="title">Titulo</label>
+                        <input class="input input-solid max-w-full" [(ngModel)]="group.name" name="name"
+                            placeholder="Titulo" type="text" id="name" required />
+                    </div>
+
+                    <!-- <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div>
+                            <label class="sr-only" for="email">Email</label>
+                            <input class="input input-solid" placeholder="Email address" type="email" id="email" />
+                        </div>
+
+                        <div>
+                            <label class="sr-only" for="phone">Phone</label>
+                            <input class="input input-solid" placeholder="Phone Number" type="tel" id="phone" />
+                        </div>
+                    </div> -->
+
+                    <div class="form-field w-full">
+                        <label class="form-label" for="message">Descrição</label>
+
+                        <textarea class="textarea textarea-solid max-w-full" [(ngModel)]="group.description"
+                            name="description" placeholder="Descrição" rows="8" id="message" required></textarea>
+                    </div>
+
+                    <div class="w-full form-field">
+                        <label class="form-label block">
+                            Público Alvo
+                            <div class="popover popover-hover">
+                                <span class="badge badge-primary popover-trigger">?</span>
+                                <div class="popover-content">
+                                    <div class="popover-arrow"></div>
+                                    <div class="p-4 text-sm">Escolha públicos alvo para pessoas as pessoas certas
+                                        encontrarem melhor seu grupo</div>
+                                </div>
+                            </div>
+
+                        </label>
+                        <ng-multiselect-dropdown 
+                        [settings]="options"
+                        [(ngModel)]="group.target"
+                         [data]="types">
+
+                        </ng-multiselect-dropdown>
+                        <!-- <select class="select select-block">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select> -->
+
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div class="flex justify-start mt-4">
+                            <button type="button" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" 
+                                class="rounded-lg btn btn-primary">Voltar</button>
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button type="button" (click)="save()" class="rounded-lg btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div>
+    <section class="bg-gray-2 rounded-xl">
+        <div class="p-8 shadow-lg">
+            <form class="space-y-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div class="form-field">
+                        <label class="form-label" for="name">Nome</label>
+                        <input class="input input-solid max-w-full" [(ngModel)]="profile.name" placeholder="Nome"
+                            name="username" type="text" id="name" />
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="search">Área de Atuação</label>
+                        <select class="select select-block" [(ngModel)]="profile.search" name="search">
+                            @for(item of profissions; track item.id) {
+                            <option [value]="item.description">{{item.description}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div class="form-field">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="input input-solid max-w-full" [(ngModel)]="profile.email" placeholder="Email"
+                            name="email" type="email" id="email" />
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="phone">Telefone</label>
+                        <input class="input input-solid max-w-full" [(ngModel)]="profile.phone" placeholder="Telefone"
+                            name="phone" type="tel" id="phone" />
+                    </div>
+                </div>
+                <div class="w-full form-field">
+                    <label class="form-label" for="message">Descrição</label>
+
+                    <textarea class="textarea textarea-solid max-w-full" [(ngModel)]="profile.description"
+                        name="description" placeholder="Sua Descrição" rows="8" id="message"></textarea>
+                </div>
+
+                @if (edit) {
+                <label class="form-label">
+                    <a class="link link-underline-hover link-primary text-sm">Alterar senha</a>
+                </label>
+                } @else {
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div class="form-field">
+                        <label class="form-label" for="password">Senha</label>
+                        <input class="input input-solid max-w-full" [(ngModel)]="profile.password" placeholder="Senha"
+                            name="password" type="text" id="password" />
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="inst">Instituição de Ensino</label>
+                        <select class="select select-block" [(ngModel)]="profile.institution" name="inst">
+                            @for(item of institution; track item.name) {
+                            <option [value]="item.name">{{item.name}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                }
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div class="flex justify-start mt-4">
+                        <button type="button" (click)="navigate()"  class="rounded-lg btn btn-primary">Voltar</button>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button type="button" (click)="save()" class="rounded-lg btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

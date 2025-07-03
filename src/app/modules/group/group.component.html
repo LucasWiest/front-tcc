@@ -1,0 +1,70 @@
+<div class="flex flex-col">
+    <div class="flex justify-start">
+        <h1>
+            {{group.name}}
+        </h1>
+    </div>
+    <div>
+        <div class="card w-fill">
+
+            <div class="card-body flex-col">
+                <h2 class="card-header">Descrição</h2>
+                <p class="text-content2">
+                    {{group.description}}
+                </p>
+                <h2 class="card-header">Públicos Alvo</h2>
+                <p class="text-content2">
+                    {{ group.target?.join(', ') || 'Nenhum público alvo definido' }}
+                </p>
+                <div class="flex flex-row justify-between">
+                    <div>
+                        <h6 class="card-header mb-5">Membros ({{group.nMembers}})</h6>
+                        <div class="text-content2 flex flex-row gap-2">
+
+                            @for(item of users; track item.id) {
+                            <div class="flex flex-col items-center text-xs gap-2">
+                                <div class="avatar avatar-lg avatar-square">
+                                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="avatar">
+                                </div>
+                                <div>{{item.name}}</div>
+                                <div>{{item.role}}</div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    @if (!sub && !alreadySend) {
+                    <div class="flex items-center">
+                        <button (click)="sendAsk()" class="btn btn-primary">
+                            Quero Perticipar
+                        </button>
+                    </div>
+                    } @else if (alreadySend) {
+                    <div class="flex items-center">
+                        <div class="alert alert-info">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M24 4C12.96 4 4 12.96 4 24C4 35.04 12.96 44 24 44C35.04 44 44 35.04 44 24C44 12.96 35.04 4 24 4ZM24 34C22.9 34 22 33.1 22 32V24C22 22.9 22.9 22 24 22C25.1 22 26 22.9 26 24V32C26 33.1 25.1 34 24 34ZM26 18H22V14H26V18Z"
+                                    fill="#0085FF" />
+                            </svg>
+                            <div class="flex">
+                                <span>Convite enviado</span>
+                                <!-- <span class="text-content2">Long sample text</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-fill">
+        @if (sub) {
+        <div class="min-h-96">
+            <app-chat>
+
+            </app-chat>
+        </div>
+        }
+    </div>
+</div>

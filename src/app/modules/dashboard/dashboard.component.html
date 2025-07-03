@@ -1,0 +1,94 @@
+<div>
+    <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-6">
+            <div class="card-header">
+                MEUS GRUPOS
+            </div>
+            @if(myGroups.length > 0) {
+            <div class="grid grid-cols-4 gap-3">
+                @for (item of myGroups; track item.name) {
+                <div class="card">
+                    <div class="card-body items-center">
+                        <h2 class="card-header">{{item.name}}</h2>
+                        <h1 class="card-header">{{item.nMembers}} membros</h1>
+                        <div class="text-content1">
+                            <span class="flex items-center gap-2">
+                                <span [ngClass]="{
+                                        'dot-primary': item.status == 'Ativo',
+                                        'dot-secondary': item.status == 'Inativo',
+                                        'dot-error': item.status == 'Encerrado'
+                                    }" class="dot"></span>
+                                <span>{{item.status}}</span>
+                            </span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" [routerLink]="[`/group/${item.id}`]"
+                                routerLinkActive="router-link-active">
+                                Mais Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            } @else {
+            <div>
+                Pesquise grupos de seu interesse para participar!
+            </div>
+            }
+        </div>
+        <div class="flex flex-col gap-6">
+            <div class="card-header">
+                GRUPOS À ENTRAR
+            </div>
+            <div>
+                <div class="flex flex-row justify-between w-full">
+                    <div class="flex flex-row gap-2">
+                        <input class="input" placeholder="Buscar Grupos">
+                        <select class="select" [(ngModel)]="filter.status" name="status">
+                            <option [ngValue]="null" name="Todos">Todos</option>
+                            @for(item of types; track item.id) {
+                            <option [value]="item.description">{{item.description}}</option>
+                            }
+                        </select>
+                        <button (click)="onFilter()" class="btn btn-secondary">Buscar</button>
+                        <div class="flex flex-row items-center gap-x-2">
+                            <input [(ngModel)]="filter.onlyTarget" (ngModelChange)="onFilter()" type="checkbox" class="checkbox checkbox-primary" checked>
+                            <span class="whitespace-nowrap">Somente na minha área</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button [routerLink]="['/group/new']" routerLinkActive="router-link-active"
+                            class="btn btn-primary">Incluir Grupo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-4 gap-2 bottom-2">
+                @for (item of groupsToEnter; track item.name) {
+                <div class="card flex">
+                    <div class="card-body items-center">
+                        <h2 class="card-header">{{item.name}}</h2>
+                        <h1 class="text-content2">{{item.nMembers}} membros</h1>
+                        <div class="text-content1">
+                            <span class="flex items-center gap-2">
+                                <span [ngClass]="{
+                                        'dot-primary': item.status == 'Ativo',
+                                        'dot-secondary': item.status == 'Inativo',
+                                        'dot-error': item.status == 'Encerrado'
+                                    }" class="dot"></span>
+                                <span>{{item.status}}</span>
+                            </span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" [routerLink]="[`/group/${item.id}`]"
+                                routerLinkActive="router-link-active">
+                                Mais Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
